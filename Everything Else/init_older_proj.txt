@@ -1,0 +1,16 @@
+with con2:
+        st.title("Kaisa Bhaya College")
+        st.header("So the simple task will be that everyone will get some questions that you guys have to answer using the data sheet given to everyone!!")
+
+        in3 = st.text_input("Who has the best personality among everyone in the class : ")
+        in4 = st.text_input("Roll Number : ",help = "(Ex. a08, a50)..", max_chars = 3, key =2)
+        b = st.button("Submit" , key = 4)
+
+Student = ['SAHDEV SINGH', 'ANSHIKA PANDEY', 'PRIYA GARG', 'VAIBHAV KUMAR', 'YASH', 'RIDDHI KAILASH', 'SHUBH AGGARWAL', "NAKUL SATYAWALI", 'DRASHTI GUPTA', "ISHITA SHARMA", "PRATIKSHA DANDRIYAL", "UMA SHANKAR", "PRIYA", "PUNEET KUMAR", "NIHAL JYOTIRAJ", "SURAJ RAWAT", "KESHAV KUMAR MISHRA", "ARYA", "URVASHI", "SATYAM VASHISTHA",
+ "SAGAR RAJ", "YAGYESH DUTT", "HARSH CHOUDHARY", "AMAN KUMAR", "NIKHIL KUMAR SINGH", "AAYUSH BHADULA", "SAMARPITH KANDHARI", "PRANAV RAI", "RAHUL", 'PIYUSH GUPTA', 'SHUBHANSHU UPADHYAY', 'NIKUNJ TYAGI', 'SHRIYANSHU SHARMA', 'LAKSHAY VASHISTH', 'SHIVAM DHAMA', 'JATIN SHARMA', 'RAHUL SHUKLA', "TUSHAR MISHRA", 'AADITYA JAIN', 'CHETAN', 'KARTIK KUMAR SINGH', 'ROHIT BHATT', 'PIYUSH GUPTA', 'ARYAN SAXENA', 'ABHISHEK SINGH', 'RANVEER YADAV', 'VAIBHAV SHARMA', 'ANUPAM KUMAR CHAUDHARY', 'AAKASH KUMAR JANGID', 'KUNAL BHARAGAV', 'UMANG PANDEY', 'HARSH', 'RAYMAN KUMAR MODI', 'AYAAN SAIFI']
+
+if(check(l1)):
+        if (b):
+            f2 = True
+            print("{} . {}".format(in1,in2))
+            ept1.empty()
