@@ -6,9 +6,9 @@ st.subheader("Select from the Message template! ")
 st.write("#")
 
 if os.path.exists("temp.txt"):
-    file = open(r"C:\Users\TransTele\Desktop\2021-22\StreamLit\Parent_Notification\temp.txt","r+")
+    file = open("temp.txt","w+")
 else:
-    file = open(r"C:\Users\TransTele\Desktop\2021-22\StreamLit\Parent_Notification\temp.txt","r+")
+    file = open("temp.txt","w+")
 
 data = ["Select... "]
 data.extend(file.readlines())
