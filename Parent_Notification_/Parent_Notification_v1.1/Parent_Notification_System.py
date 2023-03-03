@@ -29,8 +29,9 @@ uploaded_file = st.text_input("Choose a file",key="upld_file",help="If you are n
 st.info('Input the full path of the file. ', icon="ℹ️")
 
 # Here I'm Assuming that the teacher ONLY teaches a single class although it would be easy to implement a file system
-# But for the sake of completing this project im going to overlook this problem.
+# But for the sake of completing this project im going to overlook.
 
+if(1==1): print("yes")
 
 if uploaded_file is not None:
     if(os.path.exists(uploaded_file)==False):
