@@ -1,14 +1,16 @@
 import streamlit as st
 import os
 
+st.session_state
+
 st.title("Parent Notification System")
 st.subheader("Select from the Message template! ")
 st.write("#")
-
-if os.path.exists("temp.txt"):
-    file = open(r"C:\Users\TransTele\Desktop\2021-22\StreamLit\Parent_Notification\temp.txt","r+")
+f_name = "temp.txt"
+if os.path.exists(f_name):
+    file = open(f_name,"r+")
 else:
-    file = open(r"C:\Users\TransTele\Desktop\2021-22\StreamLit\Parent_Notification\temp.txt","r+")
+    file = open(f_name,"a+")
 
 data = ["Select... "]
 data.extend(file.readlines())
@@ -18,11 +20,12 @@ st.write("#")
 st.write("#")
 
 st.subheader("Write a new Message template! ")
-text_input = st.text_input("Enter the message : ",placeholder="This is a placeholder",key = "text")
+text_input = st.text_input("Enter the message : ",placeholder="This is a placeholder")
 button = st.button("Insert")
 if button:
     if text_input: 
         file.write(text_input+"\n")
+        data.append(text_input)
     else:
         st.warning("There is nothing in the Input Box",icon="🚨")
 
