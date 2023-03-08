@@ -4,9 +4,11 @@ import os
 import sys
 from Parent_Notification_System import flag
 
+#For now this is not working properly
+
 st.title("Parent Notification System")
 if flag:
-    st.subheader("Now , You have to upload the file of filtered Students")
+    st.subheader("Now , You Can open the file of Filtered Students")
 if(not flag or "upld_file" not in st.session_state or st.session_state["upld_file"]==""):
     st.caption("Please Go to the Home page")
     if st.button("Home >"):

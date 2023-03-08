@@ -16,7 +16,7 @@ def get_platform():                         #These three lines are reponsible to
     return platforms[sys.platform]
 def check_path(up_file):
     if(os.path.exists(up_file)==False):   
-        st.text("Input the correct path")
+        st.text("Input the Correct and Full Path")
         st.stop()
     if(up_file[-5:]!=".xlsx"): 
         st.text("Input the correct file with .xlsx extension")
@@ -44,7 +44,6 @@ st.write("#")
 st.subheader("Upload Students Attendance File")
 uploaded_file = st.text_input("Choose a Student Data File",key="upld_file",placeholder="Insert Path or Click The Question Button"
                               ,help="If you are not able to, then click the following link "+get_platform())
-st.info('Input the full path of the file. ', icon="ℹ️")
 if uploaded_file is not None:               #These if else statement check if the file is of xlsx extension
     check_path(uploaded_file)
 
@@ -62,34 +61,42 @@ for i in file.readlines():
     # a=a+1
 data.extend(data_path)
 
-opt = st.selectbox("Select one of the following files : ",options=data,index=0)
 
+opt = st.selectbox("Select one of the following files : ",options=data,index=0)
 
 st.subheader("Type Path to the Parent Data File ! ")
 text_input = st.text_input("Input Parent Data File : ",placeholder="Insert Path or Click The Question Button"
                            ,help="If you are not able to, then click the following link "+get_platform())
+st.info('Make Sure that the File is Closed. ', icon="ℹ️")
+
 button = st.button("Insert")
 text_flag = False
 if button:
     if text_input:
         check_path(text_input)
         text_flag = True
-        if text_input not in file.readlines()[:][:-3]:
-            file.write(text_input+"\n")
-            data.append(text_input)
+        # if text_input not in file.readlines()[:][:-3]:      #This is not working
+        file.write(text_input+'\n')   
+        data.append(text_input)
     else:
         st.warning("There is nothing in the Input Box",icon="🚨")
 
-if(opt==data[0]):
+if(opt==data[0] or opt is None):
     if not text_flag:
         st.stop()
+    else: opt = text_input
+else:
+    opt = opt[:-1]
+st.session_state["open_page"]=status(uploaded_file,opt,value)
 
-# st.session_state["open_page"]=status(uploaded_file,opt,value)
 
-st.subheader("Go to the next Page : ")
-if st.button("Next >"):
-    nav_page("Upload_Student_File")
+if(st.session_state["open_page"]):
+    st.subheader("Go to the next Page : ")
+    if st.button("Next >"):
+        nav_page("Upload_Student_File")
 
-    
-flag = st.session_state["open_page"]
+    flag = st.session_state["open_page"]
+else:
+    st.error("The Editing Was NOT Done Properly. Check if the File is close otherwise editing will not be possible")
+
 file.close()
