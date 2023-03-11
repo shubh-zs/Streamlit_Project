@@ -1,3 +1,0 @@
-C:\Users\TransTele\Desktop\2021-22\StreamLit\Parent_Notification\Sample Data\Student Attendance.xlsx
-40
-Hi {name}, your student {rno} is not attending the college
