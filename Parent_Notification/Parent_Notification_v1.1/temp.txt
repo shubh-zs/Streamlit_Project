@@ -1,1 +1,1 @@
-help 1
+Hi {name}, your student {rno} is not attending the college

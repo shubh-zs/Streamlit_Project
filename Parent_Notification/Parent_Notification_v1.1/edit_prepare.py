@@ -1,14 +1,15 @@
 from openpyxl import Workbook, load_workbook 
+from streamlit_extras.switch_page_button import switch_page
 import random
 
 def status(atten_path,parent_dta,filt_val):      
     
     wb_attendance = load_workbook(atten_path)
     wb_parent = load_workbook(parent_dta)
-    att = wb_attendance.active
+    att = wb_attendance["Sheet1"]
     dta = wb_parent.active
     wb_attendance.create_sheet("Edit Data")
-    
+
     filt_std = {}                                          #This Dictionary is used to store Roll number of Student, Then the Roll number and Parent contact info
     row_no = 1
     for at in att["B"]:
@@ -25,11 +26,14 @@ def status(atten_path,parent_dta,filt_val):
                 parent_info[roll.value] = dta["B"+str(row_no)].value
         row_no += 1 
 
-    print(filt_std)
-    print(parent_info)
+    # print(filt_std)
+    # print(parent_info)
     # wb_attendance.save(path_up_file)
 
-    edit = wb_attendance["Edit Data"]
+    edit = wb_attendance.get_sheet_by_name("Edit Data")
+    edit["A1"].value = "Roll Number"
+    edit["B1"].value = "Parent Name"
+    edit["C1"].value = "Parent Ph-No"
     row_no = 2
     for i in parent_info:                                   
         edit["A"+str(row_no)].value = i                     #Should I check if the roll number are in order present in both of the dictionary

@@ -1,20 +1,35 @@
 import streamlit as st
 import os
+from streamlit_extras.switch_page_button import switch_page
 
 st.session_state
 
 st.title("Parent Notification System")
 st.subheader("Select from the Message template! ")
-st.write("#")
+st.text("Template provides the option to input the Following variables :")
+col1 , col2  = st.columns(2)
+
+with col1:
+    st.subheader("Variable")
+    st.text("1. Parent Name")
+    st.text("2. Student Roll Number")
+
+with col2:
+    st.subheader("Input")
+    st.text("{name}")
+    st.text("{rno}")
+
+st.subheader("You have to Select the input in the Selection Box")
 f_name = "temp.txt"
 if os.path.exists(f_name):
     file = open(f_name,"r+")
 else:
     file = open(f_name,"a+")
 
+st.write("#")
 data = ["Select... "]
 data.extend(file.readlines())
-st.selectbox("Select one of the following template : ",options=data,index=0)
+opt = st.selectbox("Select one of the following template : ",options=data,index=0)
 
 st.write("#")
 st.write("#")
@@ -28,9 +43,11 @@ if button:
         data.append(text_input)
     else:
         st.warning("There is nothing in the Input Box",icon="🚨")
-
-
-
 file.close()
+
+if st.button("Next >",key="idk1") and opt is not None:
+    with open("var.txt","a") as file:
+        file.write(opt)
+    switch_page("processing")
 
 

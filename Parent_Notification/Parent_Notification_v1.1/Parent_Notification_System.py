@@ -3,6 +3,7 @@ import os
 from navigation import nav_page
 from edit_prepare import status
 import sys
+from streamlit_extras.switch_page_button import switch_page
 st.set_page_config(page_title="Notification System",page_icon="🧊",initial_sidebar_state="collapsed")
 st.session_state 
 
@@ -72,7 +73,7 @@ st.info('Make Sure that the File is Closed. ', icon="ℹ️")
 button = st.button("Insert")
 text_flag = False
 if button:
-    if text_input:
+    if text_input:                          #Assuming the file is correct
         check_path(text_input)
         text_flag = True
         # if text_input not in file.readlines()[:][:-3]:      #This is not working
@@ -88,15 +89,20 @@ if(opt==data[0] or opt is None):
 else:
     opt = opt[:-1]
 st.session_state["open_page"]=status(uploaded_file,opt,value)
+if st.session_state["open_page"]:
+    with open("var.txt","w") as file:
+        file.write(uploaded_file+"\n")
+        file.write(str(value)+"\n")
 
 
 if(st.session_state["open_page"]):
     st.subheader("Go to the next Page : ")
-    if st.button("Next >"):
-        nav_page("Upload_Student_File")
+    if st.button("Next >",key="idk"):
+        switch_page("upload student file")
 
-    flag = st.session_state["open_page"]
+        # nav_page("Upload_Student_File")
+
 else:
-    st.error("The Editing Was NOT Done Properly. Check if the File is close otherwise editing will not be possible")
+    st.error("The  Editing Was NOT Done Properly. Check if the File is close otherwise editing will not be possible")
 
 file.close()
