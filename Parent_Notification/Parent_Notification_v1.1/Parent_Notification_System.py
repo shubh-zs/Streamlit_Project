@@ -1,17 +1,19 @@
 
-import streamlit as st
 import os
+os.system("pip install openpyxl")
+
+import streamlit as st
 from navigation import nav_page
 from edit_prepare import status
 import sys
 from streamlit_extras.switch_page_button import switch_page
-pkg = ["streamlit","streamlit_extras","pywhatkit","openpyxl"]
-for i in pkg:
-    try:
-        __import__(i)
-    except:
-        os.system(f"pip install {i}")
-        print(f"The package {i} has been installed")
+# pkg = ["streamlit","streamlit_extras","pywhatkit","openpyxl"]
+# for i in pkg:
+#     try:
+#         __import__(i)
+#     except:
+        
+#         print(f"The package {i} has been installed")
 
 
 st.set_page_config(page_title="Notification System",page_icon="🧊",initial_sidebar_state="collapsed")
