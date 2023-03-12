@@ -1,3 +1,6 @@
+
+import os
+os.system("pip install openpyxl")
 from openpyxl import Workbook, load_workbook 
 from streamlit_extras.switch_page_button import switch_page
 import random
