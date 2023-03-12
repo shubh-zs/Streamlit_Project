@@ -1,10 +1,7 @@
-
-import os
-os.system("pip install openpyxl")
-
 import streamlit as st
 from navigation import nav_page
 from edit_prepare import status
+import os
 import sys
 from streamlit_extras.switch_page_button import switch_page
 # pkg = ["streamlit","streamlit_extras","pywhatkit","openpyxl"]
