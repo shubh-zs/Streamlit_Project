@@ -1,11 +1,19 @@
+
 import streamlit as st
 import os
 from navigation import nav_page
 from edit_prepare import status
 import sys
-import openpyxl
-import pywhatkit
 from streamlit_extras.switch_page_button import switch_page
+pkg = ["streamlit","streamlit_extras","pywhatkit","openpyxl"]
+for i in pkg:
+    try:
+        __import__(i)
+    except:
+        os.system(f"pip install {i}")
+        print(f"The package {i} has been installed")
+
+
 st.set_page_config(page_title="Notification System",page_icon="🧊",initial_sidebar_state="collapsed")
 st.session_state 
 
