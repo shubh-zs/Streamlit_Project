@@ -45,9 +45,12 @@ if button:
         st.warning("There is nothing in the Input Box",icon="🚨")
 file.close()
 
-if st.button("Next >",key="idk1") and opt is not None:
-    with open("var.txt","a") as file:
-        file.write(opt)
-    switch_page("processing")
+if(opt is not None and opt != data[0]):
+    if st.button("Next >",key="idk1"):
+        with open("var.txt","a") as file:
+            file.write(opt)
+        switch_page("processing")
+else:
+    st.text("To go to Page Select the Appropiate Option from the Selection Box!")
 
 

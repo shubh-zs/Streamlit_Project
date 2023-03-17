@@ -45,10 +45,14 @@ def status(atten_path,parent_dta,filt_val):
 
     #Now check if the edit is done correctly by probing randomly and checking if they match with information we know!
 
+
+    # if(len(parent_info)==0): 
+    
+    
     probe1 = random.choice(list(filt_std.keys()))
     indx1 = list(filt_std.keys()).index(probe1)+2           
 
-    probe2 = random.choice(list(filt_std.keys()))              #Assuming that probe values are unique
+    probe2 = random.choice(list(filt_std.keys()))          #Assuming that probe values are unique
     indx2 = list(filt_std.keys()).index(probe2)+2
     
     # print(probe1,":",probe2)                                 #These lines of code were written to debug 

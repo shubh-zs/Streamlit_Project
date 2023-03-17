@@ -4,14 +4,9 @@ from edit_prepare import status
 import os
 import sys
 from streamlit_extras.switch_page_button import switch_page
-# pkg = ["streamlit","streamlit_extras","pywhatkit","openpyxl"]
-# for i in pkg:
-#     try:
-#         __import__(i)
-#     except:
-        
-#         print(f"The package {i} has been installed")
 
+if "a" not in st.session_state:
+    st.session_state["a"] = 0
 
 st.set_page_config(page_title="Notification System",page_icon="🧊",initial_sidebar_state="collapsed")
 st.session_state 
@@ -91,13 +86,11 @@ if button:
     else:
         st.warning("There is nothing in the Input Box",icon="🚨")
 
-if(opt==data[0] or opt is None):
-    if not text_flag:
-        st.stop()
-    else: opt = text_input
-else:
-    opt = opt[:-1]
-st.session_state["open_page"]=status(uploaded_file,opt,value)
+status_flag = False
+if(opt is not None and opt!=data[0] and not status_flag and st.session_state["a"]==0):
+    st.session_state["open_page"]=status(uploaded_file,opt[:-1],value)
+    st.session_state['a'] = st.session_state["a"]+1
+
 if st.session_state["open_page"]:
     with open("var.txt","w") as file:
         file.write(uploaded_file+"\n")
@@ -107,11 +100,14 @@ if st.session_state["open_page"]:
 if(st.session_state["open_page"]):
     st.subheader("Go to the next Page : ")
     if st.button("Next >",key="idk"):
+        status_flag = True
+        # st.session_state["a"] = 0
         switch_page("upload student file")
+        
 
         # nav_page("Upload_Student_File")
 
-else:
-    st.error("The  Editing Was NOT Done Properly. Check if the File is close otherwise editing will not be possible")
+if(text_flag and not st.session_state["open_page"]):
+    st.error("The Editing Was NOT Done Properly. Check if the File is close otherwise editing will not be possible")
 
 file.close()
