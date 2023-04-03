@@ -13,6 +13,7 @@ st.session_state
 
 def get_platform():                         #These three lines are reponsible to display appropate links
     platforms = {
+        'linux' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
         'linux1' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
         'linux2' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
         'darwin' : 'https://support.apple.com/en-in/guide/mac-help/mchlp1774/mac',
