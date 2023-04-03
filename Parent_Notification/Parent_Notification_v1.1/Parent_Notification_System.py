@@ -11,15 +11,15 @@ if "a" not in st.session_state:
 st.set_page_config(page_title="Notification System",page_icon="🧊",initial_sidebar_state="collapsed")
 st.session_state 
 
-def get_platform():                         #These three lines are reponsible to display appropate links
-    platforms = {
-        'linux' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
-        'linux1' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
-        'linux2' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
-        'darwin' : 'https://support.apple.com/en-in/guide/mac-help/mchlp1774/mac',
-        'win32' : 'https://techcommunity.microsoft.com/t5/windows-11/how-do-i-copy-file-paths-on-windows-11/m-p/3061750'
-    }
-    return platforms[sys.platform]
+# def get_platform():                         #These three lines are reponsible to display appropate links
+#     platforms = {
+#         'linux' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
+#         'linux1' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
+#         'linux2' : 'https://askubuntu.com/questions/225666/copy-file-and-folder-path-from-nautilus',
+#         'darwin' : 'https://support.apple.com/en-in/guide/mac-help/mchlp1774/mac',
+#         'win32' : 'https://techcommunity.microsoft.com/t5/windows-11/how-do-i-copy-file-paths-on-windows-11/m-p/3061750'
+#     }
+#     return platforms[sys.platform]
 def check_path(up_file):
     if(os.path.exists(up_file)==False):   
         st.text("Input the Correct and Full Path")
@@ -72,7 +72,7 @@ opt = st.selectbox("Select one of the following files : ",options=data,index=0)
 
 st.subheader("Type Path to the Parent Data File ! ")
 text_input = st.text_input("Input Parent Data File : ",placeholder="Insert Path or Click The Question Button"
-                           ,help="If you are not able to, then click the following link "+get_platform())
+                           ,help="If you are not able to, then click the following link 'https://techcommunity.microsoft.com/t5/windows-11/how-do-i-copy-file-paths-on-windows-11/m-p/3061750'")
 st.info('Make Sure that the File is Closed. ', icon="ℹ️")
 
 button = st.button("Insert")
