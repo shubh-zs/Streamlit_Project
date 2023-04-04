@@ -34,9 +34,9 @@ if st.button("Open",key="open"):           #This funtion will open excel
         if(sys.platform == "win32"): 
             os.system("start excel "+json.dumps(uploaded_file).replace(r"\\\\",chr(92))) #This is not working "Most frustating of them all"
         elif (sys.platform == "darwin"):
-            uploaded_file = uploaded_file.replace(" ", "/ ")
+            uploaded_file = uploaded_file.replace(" ", "\ ")
             print(uploaded_file)
-            os.system('open %s -a "Microsoft Excel"' %(uploaded_file))
+            os.system('open %s -a ' %(uploaded_file))
     
 st.write("#")
 
